@@ -22,18 +22,23 @@ Quyidagi qadamlarni tartib bilan bajaring.
 2. Ochilgan muharrirdagi barcha standart kodni o'chirib, [`apps-script/Code.gs`](apps-script/Code.gs) faylining butun tarkibini joylashtiring.
 3. Yuqorida loyihaga nom bering (masalan `Avenue Leads Handler`) va **Save** (Ctrl+S) qiling.
 
-## 3-QADAM — Telegram bot yaratish (xohlasangiz)
+## 3-QADAM — Telegram bot (sizniki uchun allaqachon tayyorlandi ✅)
 
-Agar har bir ariza kelganda Telegram'ga darhol xabar kelishini xohlasangiz:
+Sizning bot tokeningiz va chat_id'ingiz [`apps-script/Code.gs`](apps-script/Code.gs) faylidagi `oneTimeSetup()` funksiyasiga allaqachon yozib qo'yilgan:
 
-1. Telegram'da **@BotFather** botini toping va `/newbot` buyrug'ini yuboring.
-2. Bot uchun nom va username bering (username `bot` bilan tugashi kerak, masalan `avenue_leads_bot`).
-3. BotFather sizga **bot token** beradi (masalan `123456789:AAExxxxxxxxxxxxxxxxxxxxxxxxxxx`) — uni saqlab qo'ying.
-4. Endi yaratgan botingizga o'zingiz Telegram'da `/start` deb yozing (bot sizga xabar yuborishi uchun avval siz bilan "chat" ochilgan bo'lishi kerak).
-5. **Chat ID**ni olish uchun brauzerda quyidagi manzilni oching (BOT_TOKEN o'rniga o'zingiznikini qo'ying):
-   `https://api.telegram.org/botBOT_TOKEN/getUpdates`
-   Javobda `"chat":{"id":123456789, ...}` qatorini topasiz — shu raqam sizning **chat_id**ingiz.
-   > Agar javob bo'sh bo'lsa, botga avval biror xabar yuboring va sahifani qayta yangilang.
+```js
+function oneTimeSetup() {
+  var props = PropertiesService.getScriptProperties();
+  props.setProperty('TELEGRAM_BOT_TOKEN', '8754722944:AAFJnLv1-MyKidN8y3f0S0jxAno3OBSP-3M');
+  props.setProperty('TELEGRAM_CHAT_ID', '1553336381');
+}
+```
+
+Sizga qolgan yagona ish — 2-qadamda kodni joylashtirgach, Apps Script muharriridagi funksiyalar ro'yxatidan **oneTimeSetup** ni tanlab, ▶ **Run** tugmasini bir marta bosish (birinchi marta ruxsat so'raydi — Google hisobingiz bilan tasdiqlang). Shundan keyin token/chat_id xavfsiz tarzda Script Properties'ga saqlanadi.
+
+> ⚠️ **Muhim:** bu token botingizga to'liq kirish huquqini beradi. Uni endi hech qayerga (jamoat kanaliga, GitHub'ga, skrinshotga) qo'ymang. Agar u oshkor bo'lib qolgan deb hisoblasangiz, @BotFather'da `/revoke` buyrug'i orqali istalgan payt yangi token olishingiz mumkin.
+
+> Agar kelajakda boshqa bot/chat ishlatmoqchi bo'lsangiz: @BotFather'da `/newbot`, keyin botga `/start` yozing, so'ng `https://api.telegram.org/botBOT_TOKEN/getUpdates` manzilidan `"chat":{"id":...}` qiymatini oling.
 
 6. Apps Script muharririga qayting, kodning pastki qismidagi `oneTimeSetup()` funksiyasini toping:
    ```js

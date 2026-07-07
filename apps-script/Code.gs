@@ -80,6 +80,34 @@ function notifyTelegram(name, phone, source) {
  */
 function oneTimeSetup() {
   var props = PropertiesService.getScriptProperties();
-  props.setProperty('TELEGRAM_BOT_TOKEN', 'BU_YERGA_BOT_TOKENINGIZNI_YOZING');
-  props.setProperty('TELEGRAM_CHAT_ID', 'BU_YERGA_CHAT_ID_YOZING');
+  props.setProperty('TELEGRAM_BOT_TOKEN', '8754722944:AAFJnLv1-MyKidN8y3f0S0jxAno3OBSP-3M');
+  props.setProperty('TELEGRAM_CHAT_ID', '1553336381');
+}
+
+/**
+ * DIAGNOSTIKA: Script Properties to'g'ri saqlanganini va Telegram xabari
+ * yuborilishini tekshiradi. Funksiyalar ro'yxatidan "checkTelegramSetup" ni
+ * tanlab Run qiling, so'ng "Execution log"ni o'qing.
+ */
+function checkTelegramSetup() {
+  var props = PropertiesService.getScriptProperties();
+  var botToken = props.getProperty('TELEGRAM_BOT_TOKEN');
+  var chatId = props.getProperty('TELEGRAM_CHAT_ID');
+
+  Logger.log('TELEGRAM_BOT_TOKEN saqlanganmi: ' + (botToken ? 'HA (' + botToken.slice(0, 8) + '...)' : 'YO\'Q — bo\'sh'));
+  Logger.log('TELEGRAM_CHAT_ID saqlanganmi: ' + (chatId ? 'HA (' + chatId + ')' : 'YO\'Q — bo\'sh'));
+
+  if (!botToken || !chatId) {
+    Logger.log('XATOLIK: Properties bo\'sh. Avval "oneTimeSetup" funksiyasini tanlab Run qiling.');
+    return;
+  }
+
+  var url = 'https://api.telegram.org/bot' + botToken + '/sendMessage';
+  var response = UrlFetchApp.fetch(url, {
+    method: 'post',
+    contentType: 'application/json',
+    payload: JSON.stringify({ chat_id: chatId, text: '✅ Diagnostika: Apps Script\'dan Telegram\'ga ulanish ishlayapti.' }),
+    muteHttpExceptions: true
+  });
+  Logger.log('Telegram javobi (status ' + response.getResponseCode() + '): ' + response.getContentText());
 }
