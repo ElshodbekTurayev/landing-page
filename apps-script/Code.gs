@@ -57,7 +57,7 @@ function notifyTelegram(name, phone, source) {
   if (!botToken || !chatId) return;
 
   var text = [
-    '🆕 Yangi ariza — Avenue Residence',
+    '🆕 Yangi ariza — Elite Building',
     '',
     '👤 Ism: ' + name,
     '📞 Telefon: ' + phone,
