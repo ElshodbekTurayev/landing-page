@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/home.webp" fetchpriority="high">
 
 <!--
   ====================================================================
@@ -95,7 +96,7 @@
     display:flex; align-items:center; gap:8px;
     color:var(--white); font-weight:800; font-size:.95rem; letter-spacing:.02em;
   }
-  .brand svg{ flex:none; }
+  .brand-logo{ height:22px; width:auto; }
   .date-pill{
     display:inline-flex; align-items:center; gap:6px;
     border:1px solid rgba(255,255,255,.8); border-radius:20px;
@@ -248,8 +249,7 @@
   <div class="wrap">
     <div class="hero-topbar">
       <div class="brand">
-        <svg width="22" height="22" viewBox="0 0 100 100" fill="none"><path d="M50 6 L90 22 V50 C90 74 72 90 50 96 C28 90 10 74 10 50 V22 Z" fill="none" stroke="#ffffff" stroke-width="7"/><path d="M35 50 L45 60 L67 38" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-        ELITE BUILDING
+        <img src="assets/logo.webp" alt="Elite Building" class="brand-logo">
       </div>
       <span class="date-pill" id="event-date">21-Noyabr 20:30da</span>
     </div>
@@ -257,8 +257,8 @@
     <h1 class="hero-headline"><span class="green">Samarqand shahar markazidan oyiga</span> 5mln so'mdan boshlab halol muddatli to'lov bilan xonadon xarid qiling</h1>
 
     <div class="hero-stage">
-      <img class="building-bg" src="assets/home.png" alt="Elite Building turar-joy majmuasi" width="780" height="774">
-      <img class="person" src="assets/hero-person.png" alt="Elite Building menejeri" width="480" height="722">
+      <img class="building-bg" src="assets/home.webp" alt="Elite Building turar-joy majmuasi" width="780" height="774" fetchpriority="high">
+      <img class="person" src="assets/hero-person.webp" alt="Elite Building menejeri" width="480" height="722" fetchpriority="high">
       <div class="hero-cta-overlap">
         <div class="cta-btn-wrap">
           <a href="#lead-form" class="cta-btn">Bepul qatnashish</a>
@@ -267,7 +267,7 @@
     </div>
 
     <div class="gift-card">
-      <div class="gift-emoji"><img src="assets/box.png" alt="Sovg'a" width="202" height="202"></div>
+      <div class="gift-emoji"><img src="assets/box.webp" alt="Sovg'a" width="202" height="202" loading="lazy"></div>
       <div class="gift-text">
         <h3>Qatnashuvchilar uchun sovg'a:</h3>
         <p><b>BEPUL</b> ga 1 ta ta'mirlangan xonadon yutib olish imkoniyati</p>
@@ -332,8 +332,7 @@
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="brand">
-    <svg width="20" height="20" viewBox="0 0 100 100" fill="none"><path d="M50 6 L90 22 V50 C90 74 72 90 50 96 C28 90 10 74 10 50 V22 Z" fill="none" stroke="#ffffff" stroke-width="7"/><path d="M35 50 L45 60 L67 38" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-    ELITE BUILDING
+    <img src="assets/logo.webp" alt="Elite Building" class="brand-logo">
   </div>
   <div class="footer-links">
     <a href="tel:+998901234567">+998 90 123 45 67</a>
